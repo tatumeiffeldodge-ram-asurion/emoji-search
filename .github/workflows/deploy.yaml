@@ -4,7 +4,7 @@ on:
       - main
 
 jobs:
-  Deploy:
+  Semgrep:
     runs-on: [ubuntu-latest]
     container:
       # A Docker image with Semgrep installed. Do not change this.
@@ -29,3 +29,9 @@ jobs:
         with:
           node-version: '16'
       - run: "npm run test"
+  Deploy:
+    permissions:
+      contents: write
+    runs-on: [ubuntu-latest]
+    steps:
+      - run: npm run build
