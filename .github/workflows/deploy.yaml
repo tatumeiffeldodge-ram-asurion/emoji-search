@@ -14,9 +14,6 @@ jobs:
     if: (github.actor != 'dependabot[bot]')
 
     steps:
-      - uses: actions/setup-node
-        with:
-          node-version: '16'
       # Fetch project source with GitHub Actions Checkout.
       - uses: actions/checkout@v3
         with:
@@ -28,4 +25,7 @@ jobs:
           # Generate a token from Semgrep Cloud Platform > Settings
           # and add it to your GitHub secrets.
           SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - run: "npm run test"
