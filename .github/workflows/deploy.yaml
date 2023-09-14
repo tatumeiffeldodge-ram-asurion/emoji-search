@@ -30,6 +30,7 @@ jobs:
           node-version: '16'
       - run: "npm run test"
   Deploy:
+    needs: [Semgrep]
     permissions:
       contents: write
     runs-on: [ubuntu-latest]
